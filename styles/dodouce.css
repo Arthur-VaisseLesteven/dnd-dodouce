@@ -1,0 +1,50 @@
+@font-face {
+    font-family: 'dungeonregular';
+    src: url('custom-fonts/dragonlord-webfont.woff2') format('woff2'), url('custom-fonts/dragonlord-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+:root {
+    --background-color: #333333;
+    --main-color: #3498db;
+    --secondary-color: #2c3e50;
+    --font-color: #fff;
+}
+
+body {
+    background-color:var(--background-color)!important;
+    color:var(--font-color)!important;
+}
+
+p {
+    text-align: justify;
+}
+
+h1, h2, h3 {
+    font-family: 'dungeonregular', Arial, sans-serif;
+    font-weight:normal;
+    font-style:normal;
+}
+
+.menu {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.menu-item {
+    width: 350px;
+}
+
+.table-search {
+    position: relative;
+    top: 50px;
+    left: 5px
+}
+.table-search-glass {
+    position: relative;
+    top: 50px;
+    left: -22px
+}

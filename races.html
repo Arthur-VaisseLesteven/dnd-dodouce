@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+    <link rel="stylesheet" href="styles/w3.css">
+    <link rel="stylesheet" href="styles/dodouce.css">
+    <link href="styles/fontawesome/css/fontawesome.css" rel="stylesheet" />
+    <link href="styles/fontawesome/css/brands.css" rel="stylesheet" />
+    <link href="styles/fontawesome/css/solid.css" rel="stylesheet" />
+    <link href="styles/fontawesome/css/sharp-thin.css" rel="stylesheet" />
+    <link href="styles/fontawesome/css/duotone-thin.css" rel="stylesheet" />
+    <link href="styles/fontawesome/css/sharp-duotone-thin.css" rel="stylesheet" />
+</head>
+<body>
+
+<div class="w3-container w3-center w3-row">
+    <a href="index.html"><img src="./imgs/banner.svg" width="60%" class="w3-center"></a>
+</div>
+
+<div class="w3-container">
+    <div>
+        <input id="search" type="text" placeholder="Filtrer" class="w3-margin-bottom table-search">
+        <i class="fa-solid fa-magnifying-glass w3-text-black table-search-glass"></i>
+    </div>
+    <table class="w3-table w3-border w3-hoverable w3-centered w3-card">
+        <thead>
+        <tr><th>Race</th><th>Source</th></tr>
+        </thead>
+        <tbody id="races">
+            <tr onclick="location.href='./races/humains.html'"><td>Humains</td><td>Le Manuel du Joueur</td></tr>
+            <tr onclick="location.href='./races/demi-orques.html'"><td>Demi-Orques</td><td>Le Manuel du Joueur</td></tr>
+            <tr onclick="location.href='./races/demi-elfes.html'"><td>Demi-Elfes</td><td>Le Manuel du Joueur</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="application/javascript">
+    function searchInput() {
+        return document.getElementById("search").value.toLowerCase();
+    }
+
+    document.getElementById("search").onchange = function() {
+        for (let raceLine of document.querySelectorAll('tbody > tr')) {
+            if(raceLine.textContent.toLowerCase().includes(searchInput())){
+                raceLine.style.display = 'table-row';
+            } else {
+                raceLine.style.display = 'none';
+            }
+        }
+    }
+</script>
+</body>
+</html>
