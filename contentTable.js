@@ -1,5 +1,7 @@
 
 class contentTable extends HTMLElement {
+    columns;
+
     constructor() {
         super();
 
@@ -21,15 +23,27 @@ class contentTable extends HTMLElement {
             </table>
         </div>`
 
-        this.addHeaderLine();
+        this.columns = this.buildColumnsFromAttributes();
+        this.buildHeaderLine();
         this.shadowRoot.getElementById('search').onkeyup = () => this.filterContent();
     }
 
-    addHeaderLine() {
-        if (this.hasAttribute("content")) {
-            let content = this.getAttribute("content");
-            this.shadowRoot.getElementById("headers").innerHTML = this.hasSourceColumn() ? `<tr><th>${content}</th><th>Source</th></tr>` : `<tr><th>${content}</th></tr>`;
-        }
+    buildColumnsFromAttributes() {
+        let columns = [],
+            counter = 0;
+
+        do {
+            counter += 1;
+            if (this.hasAttribute(`column-${counter}`)) {
+                columns.push(this.getAttribute(`column-${counter}`));
+            }
+        } while (columns.length === counter);
+
+        return columns;
+    }
+
+    buildHeaderLine() {
+        this.shadowRoot.getElementById("headers").innerHTML = '<tr>' + this.columns.map(column => `<th>${column}</th>`).join('') + '</tr>';
     }
 
     /**
@@ -38,19 +52,11 @@ class contentTable extends HTMLElement {
      * @param content.source    source that content comes from
      */
     addContent(content) {
-        if (this.hasSourceColumn()) {
-            this.shadowRoot.getElementById("table").insertAdjacentHTML('beforeend', `<tr onclick="location.href=\'${content.href}\'"><td>${content.label}</td><td>${content.source}</td></tr>`);
-        } else {
-            this.shadowRoot.getElementById("table").insertAdjacentHTML('beforeend', `<tr onclick="location.href=\'${content.href}\'"><td>${content.label}</td></tr>`);
-        }
+        this.shadowRoot.getElementById("table").insertAdjacentHTML('beforeend', this.buildContentLine(content))
     }
 
-    hasSourceColumn(){
-        if (this.hasAttribute("sources-column")) {
-            return this.getAttribute("sources-column") === true;
-        } else {
-            return true;
-        }
+    buildContentLine(content) {
+        return `<tr onclick="location.href=\'${content.href}\'">` + this.columns.map(column => `<td>${content[column]}</td>`).join('') + '</tr>';
     }
 
     filterContent() {
@@ -62,7 +68,6 @@ class contentTable extends HTMLElement {
     matchSearch(contentLine) {
         return contentLine.textContent.toLowerCase().includes(this.shadowRoot.getElementById("search").value.toLowerCase());
     }
-
 }
 
 customElements.define('content-table', contentTable);

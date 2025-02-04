@@ -15,16 +15,16 @@
     <a href="index.html"><img src="./imgs/banner.svg" width="60%" class="w3-center"></a>
 </div>
 
-<content-table content="Races"></content-table>
+<content-table column-1="Race" column-2="Source"></content-table>
 
 <script src="contentTable.js" type="text/javascript"></script>
 
 <script type="text/javascript">
     let theContentTable = document.querySelector('content-table');
-    theContentTable.addContent({href: './races/demi-elfes.html',    label: 'Demi-Elfes',    source: 'Le Manuel du Joueur'});
-    theContentTable.addContent({href: './races/demi-orques.html',   label: 'Demi-Orques',   source: 'Le Manuel du Joueur'});
-    theContentTable.addContent({href: './races/elfes.html',         label: 'Elfes',         source: 'Le Manuel du Joueur'});
-    theContentTable.addContent({href: './races/humains.html',       label: 'Humains',       source: 'Le Manuel du Joueur'});
+    theContentTable.addContent({href: './races/demi-elfes.html',    Race: 'Demi-Elfes',    Source: 'Le Manuel du Joueur'});
+    theContentTable.addContent({href: './races/demi-orques.html',   Race: 'Demi-Orques',   Source: 'Le Manuel du Joueur'});
+    theContentTable.addContent({href: './races/elfes.html',         Race: 'Elfes',         Source: 'Le Manuel du Joueur'});
+    theContentTable.addContent({href: './races/humains.html',       Race: 'Humains',       Source: 'Le Manuel du Joueur'});
 </script>
 </body>
 </html>
