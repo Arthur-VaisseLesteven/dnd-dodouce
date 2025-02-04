@@ -17,8 +17,17 @@ body {
     color:var(--font-color)!important;
 }
 
-p {
+p, section {
     text-align: justify;
+}
+
+section > header {
+    font-weight: bold;
+    font-size: larger;
+}
+
+section {
+    margin: 1em;
 }
 
 h1, h2, h3 {
