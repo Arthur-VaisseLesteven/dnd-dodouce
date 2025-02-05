@@ -12,13 +12,17 @@
   <a href="../index.html"><img src="../imgs/banner.svg" width="60%" class="w3-center"></a>
 </div>
 
-<h1>Races</h1>
-<ul>
-  <li><a href="../races/humains.html">Humains</a></li>
-  <li><a href="../races/demi-orques.html">Demi-Orques</a></li>
-  <li><a href="../races/demi-elfes.html">Demi-Elfes</a></li>
-  <li><a href="../races/elfes.html">Elfes</a></li>
-</ul>
+<content-table column-1="Catégorie" column-2="Elément"></content-table>
 
+<script src="../contentTable.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  let theContentTable = document.querySelector('content-table');
+
+  theContentTable.addContent({href: './races/demi-elfes.html',      Catégorie: 'Races',         Elément: 'Demi-Elfes'});
+  theContentTable.addContent({href: './races/demi-orques.html',     Catégorie: 'Races',         Elément: 'Demi-Orques'});
+  theContentTable.addContent({href: './races/elfes.html',           Catégorie: 'Races',         Elément: 'Elfes'});
+  theContentTable.addContent({href: './races/humains.html',         Catégorie: 'Races',         Elément: 'Humains'});
+</script>
 </body>
 </html>

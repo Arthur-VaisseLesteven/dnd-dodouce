@@ -51,14 +51,3 @@ h1, h2, h3 {
     cursor: pointer;
     box-shadow: 0 4px 10px 0 rgba(255, 255, 255, 0.2), 0 4px 20px 0 rgba(255, 255, 255, 0.19);
 }
-
-.table-search {
-    position: relative;
-    top: 50px;
-    left: 5px
-}
-.table-search-glass {
-    position: relative;
-    top: 50px;
-    left: -22px
-}

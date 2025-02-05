@@ -5,15 +5,27 @@ class contentTable extends HTMLElement {
     constructor() {
         super();
 
-        this.attachShadow({ mode: "open" }).innerHTML = `
-        <link rel="stylesheet" href="styles/w3.css">
-        <link rel="stylesheet" href="styles/dodouce.css">
-        <link href="styles/fontawesome/css/fontawesome.css" rel="stylesheet" />
-        <link href="styles/fontawesome/css/solid.css" rel="stylesheet" />
+        this.innerHTML = `
+        <style>
+        content-table > .content-table-row {
+            cursor: pointer;
+        }
+        
+        content-table > .content-table-search {
+            position: relative;
+            top: 50px;
+            left: 5px
+        }
+        content-table > .content-table-search-glass {
+            position: relative;
+            top: 50px;
+            left: -22px
+        }
+        </style>
         <div class="w3-container">
             <div>
-              <input id="search" type="text" placeholder="Filtrer" class="w3-margin-bottom table-search">
-              <i class="fa-solid fa-magnifying-glass w3-text-black table-search-glass"></i>
+              <input type="text" placeholder="Filtrer" class="w3-margin-bottom content-table-search">
+              <i class="fa-solid fa-magnifying-glass w3-text-black content-table-search-glass"></i>
             </div>
             <table class="w3-table w3-border w3-hoverable w3-centered w3-card">
                 <thead id="headers">
@@ -25,7 +37,7 @@ class contentTable extends HTMLElement {
 
         this.columns = this.buildColumnsFromAttributes();
         this.buildHeaderLine();
-        this.shadowRoot.getElementById('search').onkeyup = () => this.filterContent();
+        this.getRootNode().getElementById('search').onkeyup = () => this.filterContent();
     }
 
     buildColumnsFromAttributes() {
@@ -43,7 +55,7 @@ class contentTable extends HTMLElement {
     }
 
     buildHeaderLine() {
-        this.shadowRoot.getElementById("headers").innerHTML = '<tr>' + this.columns.map(column => `<th>${column}</th>`).join('') + '</tr>';
+        this.getRootNode().getElementById("headers").innerHTML = '<tr>' + this.columns.map(column => `<th>${column}</th>`).join('') + '</tr>';
     }
 
     /**
@@ -52,11 +64,11 @@ class contentTable extends HTMLElement {
      * @param content.source    source that content comes from
      */
     addContent(content) {
-        this.shadowRoot.getElementById("table").insertAdjacentHTML('beforeend', this.buildContentLine(content))
+        this.getRootNode().getElementById("table").insertAdjacentHTML('beforeend', this.buildContentLine(content))
     }
 
     buildContentLine(content) {
-        return `<tr onclick="location.href=\'${content.href}\'">` + this.columns.map(column => `<td>${content[column]}</td>`).join('') + '</tr>';
+        return `<tr class="content-table-row" onclick="location.href=\'${content.href}\'">` + this.columns.map(column => `<td>${content[column]}</td>`).join('') + '</tr>';
     }
 
     filterContent() {
@@ -66,7 +78,7 @@ class contentTable extends HTMLElement {
     }
 
     matchSearch(contentLine) {
-        return contentLine.textContent.toLowerCase().includes(this.shadowRoot.getElementById("search").value.toLowerCase());
+        return contentLine.textContent.toLowerCase().includes(this.getRootNode().getElementById("search").value.toLowerCase());
     }
 }
 
