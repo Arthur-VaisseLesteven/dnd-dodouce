@@ -1,3 +1,5 @@
+// enhancments : upon having something typed in replace the glass by a cross that would empty the search field
+
 
 class contentTable extends HTMLElement {
     columns;

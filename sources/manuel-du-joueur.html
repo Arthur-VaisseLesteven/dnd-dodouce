@@ -8,22 +8,19 @@
 </head>
 <body>
 
-<div class="w3-container w3-center w3-row">
-  <a href="../index.html"><img src="../imgs/banner.svg" width="60%" class="w3-center"></a>
-</div>
-
+<page-header></page-header>
 <content-table column-1="Catégorie" column-2="Elément"></content-table>
 
+<script src="../pageHeader.js" type="text/javascript"></script>
 <script src="../contentTable.js" type="text/javascript"></script>
-
 <script type="text/javascript">
   let theContentTable = document.querySelector('content-table');
 
-  theContentTable.addContent({href: './races/demi-elfes.html',      Catégorie: 'Races',         Elément: 'Demi-Elfes'});
-  theContentTable.addContent({href: './races/demi-orques.html',     Catégorie: 'Races',         Elément: 'Demi-Orques'});
-  theContentTable.addContent({href: './races/elfes.html',           Catégorie: 'Races',         Elément: 'Elfes'});
-  theContentTable.addContent({href: './races/humains.html',         Catégorie: 'Races',         Elément: 'Humains'});
-  theContentTable.addContent({href: './races/gnomes.html',          Catégorie: 'Races',         Elément: 'Gnomes'});
+  theContentTable.addContent({href: '../races/demi-elfes.html',      Catégorie: 'Races',         Elément: 'Demi-Elfes'});
+  theContentTable.addContent({href: '../races/demi-orques.html',     Catégorie: 'Races',         Elément: 'Demi-Orques'});
+  theContentTable.addContent({href: '../races/elfes.html',           Catégorie: 'Races',         Elément: 'Elfes'});
+  theContentTable.addContent({href: '../races/humains.html',         Catégorie: 'Races',         Elément: 'Humains'});
+  theContentTable.addContent({href: '../races/gnomes.html',          Catégorie: 'Races',         Elément: 'Gnomes'});
 </script>
 </body>
 </html>
